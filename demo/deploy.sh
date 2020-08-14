@@ -5,6 +5,7 @@ set -ev
 go install -v -tags=no_env github.com/therecipe/qt/cmd/...
 
 OPWD=$PWD
+unset QT_FAT
 export QT_GEN_GO=true
 export CGO_ENABLED=0
 
