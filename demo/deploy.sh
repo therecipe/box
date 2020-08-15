@@ -2,7 +2,7 @@
 
 set -ev
 
-go install -v -tags=no_env github.com/therecipe/qt/cmd/...
+go install -v -d github.com/therecipe/qt/cmd/...
 
 OPWD=$PWD
 unset QT_FAT
