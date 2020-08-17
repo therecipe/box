@@ -4,3 +4,4 @@ vendor/*
 rcc*
 moc*
 *.qmlc
+qtbox

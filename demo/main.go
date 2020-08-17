@@ -4,8 +4,6 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/therecipe/qt/interop/gow" //TODO:
-
 	"github.com/therecipe/qt/core"
 	"github.com/therecipe/qt/quick"
 	"github.com/therecipe/qt/quickcontrols2"
@@ -14,7 +12,7 @@ import (
 
 func main() {
 
-	p, r := gow.InitProcess() //TODO: app := widgets.NewQApplication(len(os.Args), os.Args)
+	app := widgets.NewQApplication(len(os.Args), os.Args)
 
 	//
 	//https://github.com/therecipe/examples/tree/master/basic/widgets
@@ -88,5 +86,5 @@ func main() {
 	// start the main Qt event loop
 	// and block until app.Exit() is called
 	// or the window is closed by the user
-	gow.Exec(p, r) //TODO: app.Exec()
+	app.Exec()
 }
