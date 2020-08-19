@@ -19,8 +19,9 @@ cd $OPWD/full/deploy && zip -9qrXy windows_amd64_513_full_http.zip windows && cd
 $(go env GOPATH)/bin/qtdeploy -docker -tags=http_interop build linux_static full && docker rmi therecipe/qt:linux_static
 cd $OPWD/full/deploy/linux && zip -9qrXy ../linux_amd64_513_full_http.zip * && cd $OPWD && rm -rf $OPWD/full/deploy/linux
 
+cmd="GOPATH=/home/user/work /home/user/work/bin/qtsetup generate darwin && qtdeploy -tags=http_interop build darwin /media/sf_GOPATH0/src/github.com/therecipe/box/full"
 cd $(go env GOPATH)/src/github.com/therecipe/qt/internal/docker/darwin && ./build_static.sh && cd $OPWD
-$(go env GOPATH)/bin/qtdeploy -docker -tags=http_interop build darwin_static full && docker rmi therecipe/qt:darwin_static
+docker run --rm -v $(go env GOPATH):/media/sf_GOPATH0 -e QT_FAT=true -e GOPATH=/home/user/work:/media/sf_GOPATH0 -i therecipe/qt:darwin_static bash -c "$cmd" && docker rmi therecipe/qt:darwin_static
 cd $OPWD/full/deploy/darwin/full.app/Contents/MacOS && zip -9qrXy ../../../../darwin_amd64_513_full_http.zip * && cd $OPWD && rm -rf $OPWD/full/deploy/darwin
 
 cd ./demo && ./deploy.sh
