@@ -11,8 +11,7 @@ export QT_FAT=true
 cmd="echo 'REGEDIT4
 
 [HKEY_CURRENT_USER\Environment]
-\"QT_FAT\"=\"true\"
-\"QT_DEBUG_CONSOLE\"=\"false\"' > env.reg && regedit env.reg && wineserver -w && GOPATH=C:/gopath wine C:/gopath/bin/qtsetup generate && qtdeploy -tags=http_interop build windows /media/sf_GOPATH0/src/github.com/therecipe/box/full"
+\"QT_FAT\"=\"true\"' > env.reg && regedit env.reg && wineserver -w && qtdeploy -tags=http_interop build windows /media/sf_GOPATH0/src/github.com/therecipe/box/full"
 docker run --rm -v $(go env GOPATH):/media/sf_GOPATH0 -e GOPATH=/home/user/work:/media/sf_GOPATH0 -i therecipe/qt:windows_64_shared_wine bash -c "$cmd" && docker rmi therecipe/qt:windows_64_shared_wine
 cd $OPWD/full/deploy && zip -9qrXy windows_amd64_513_full_http.zip windows && cd $OPWD && rm -rf $OPWD/full/deploy/windows
 
