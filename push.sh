@@ -1,6 +1,12 @@
 #!/bin/bash
 set -e
 
+
+if [ ! -f "./full/deploy/windows_amd64_513_full_http.zip" ]; then echo "windows is missing"; exit 1; fi
+if [ ! -f "./full/deploy/darwin_amd64_513_full_http.zip" ]; then echo "darwin is missing"; exit 1; fi
+if [ ! -f "./full/deploy/linux_amd64_513_full_http.zip" ]; then echo "linux is missing"; exit 1; fi
+
+
 REPO=therecipe/box
 AUTH_HEADER="Authorization: token ${GITHUB_SECRET}"
 
